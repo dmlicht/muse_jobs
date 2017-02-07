@@ -29,4 +29,12 @@ Test:
 * pytest
 
 ## Roadmap
+#### Should do
+[ ] Dump api results into a local database
+[ ] CLI
+[ ] Write SQL query
+
+#### Could do
+[ ] Add the ability to start from a page that isn't the first page
+[ ] Parallel Downloads
 
