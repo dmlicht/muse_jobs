@@ -21,7 +21,7 @@ CREATE TABLE jobs (
 );
 
 CREATE TABLE locations (
-  id PRIMARY KEY,
+  id INT PRIMARY KEY,
   name TEXT
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE job_locations (
   job_id int,
   location_id INT,
   FOREIGN KEY(job_id) REFERENCES jobs(id),
-  FOREIGN KEY(location_id) REFERENCES locations(id)
+  FOREIGN KEY(location_id) REFERENCES locations(name)
 );
 
 CREATE TABLE categories (

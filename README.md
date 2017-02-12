@@ -13,6 +13,9 @@ Init database (From the root dir):
     sqlite3 jobs.db < db.schema
     cd -
 
+Run JSON to Database code on example jobs json:
+
+    sh run_add_script.sh
 
 Get help:
 
