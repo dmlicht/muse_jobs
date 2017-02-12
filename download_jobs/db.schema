@@ -10,19 +10,18 @@ CREATE TABLE companies (
 );
 
 CREATE TABLE jobs (
+  id INT PRIMARY KEY,
   contents TEXT,
   name TEXT,
   publication_date TEXT, /* sqlite doesn't support dates, in a larger application we would likely a more robust client/server db */
   short_name TEXT,
   model_type TEXT,
-  id INT PRIMARY KEY,
   company_id INT,
   FOREIGN KEY(company_id) REFERENCES companies(id)
 );
 
 CREATE TABLE locations (
-  id INT PRIMARY KEY,
-  name TEXT
+  name TEXT PRIMARY KEY
 );
 
 /* We would probably want to denormalize job_locations in practice, because people will always want to see when looking at jobs. */
