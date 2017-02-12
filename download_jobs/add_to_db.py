@@ -28,7 +28,7 @@ def main():
 
 
 def add_job(job):
-    # TODO: Add other data
+    # TODO: Add additional data that we are not using for count of jobs in NY
     # Set up db
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
@@ -44,6 +44,7 @@ def add_job(job):
 
     # Add locations
     for location in job['locations']:
+        # TODO: actual it seems redundant to store locations AND jobs_locations. cleanup when mvp built
         cursor.execute(ADD_LOCATION_SQL, (location["name"],))
         cursor.execute(ADD_JOBS_LOCATIONS_SQL, (job["id"], location["name"], ))
 
