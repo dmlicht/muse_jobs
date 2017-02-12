@@ -25,11 +25,11 @@ CREATE TABLE locations (
 );
 
 /* We would probably want to denormalize job_locations in practice, because people will always want to see when looking at jobs. */
-CREATE TABLE job_locations (
-  job_id int,
-  location_id INT,
+CREATE TABLE jobs_locations (
+  job_id INT,
+  location_name TEXT,
   FOREIGN KEY(job_id) REFERENCES jobs(id),
-  FOREIGN KEY(location_id) REFERENCES locations(name)
+  FOREIGN KEY(location_name) REFERENCES locations(name)
 );
 
 CREATE TABLE categories (
