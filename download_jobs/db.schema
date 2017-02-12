@@ -1,0 +1,68 @@
+/*
+Useful things we can do:
+ - Index on various data we'd like to search on: locations, maybe tags later
+ */
+
+CREATE TABLE companies (
+  id PRIMARY KEY,
+  name TEXT,
+  short_name TEXT
+);
+
+CREATE TABLE jobs (
+  contents TEXT,
+  name TEXT,
+  publication_date TEXT, /* sqlite doesn't support dates, in a larger application we would likely a more robust client/server db */
+  short_name TEXT,
+  model_type TEXT,
+  id INT PRIMARY KEY,
+  company_id INT,
+  FOREIGN KEY(company_id) REFERENCES companies(id)
+);
+
+CREATE TABLE locations (
+  id PRIMARY KEY,
+  name TEXT
+);
+
+/* We would probably want to denormalize job_locations in practice, because people will always want to see when looking at jobs. */
+CREATE TABLE job_locations (
+  job_id int,
+  location_id INT,
+  FOREIGN KEY(job_id) REFERENCES jobs(id),
+  FOREIGN KEY(location_id) REFERENCES locations(id)
+);
+
+CREATE TABLE categories (
+  job_id INT,
+  name TEXT,
+  FOREIGN KEY(job_id) REFERENCES jobs(id)
+);
+
+CREATE TABLE levels (
+  job_id int,
+  name TEXT,
+  short_name TEXT,
+  FOREIGN KEY(job_id) REFERENCES jobs(id)
+);
+
+CREATE TABLE job_refs (
+  job_id INT,
+  landing_page TEXT,
+  FOREIGN KEY(job_id) REFERENCES jobs(id)
+);
+
+CREATE TABLE tags (
+  id PRIMARY KEY,
+  name TEXT,
+  short_name TEXT
+);
+
+CREATE TABLE jobs_tags (
+  tag_id INT,
+  job_id INT,
+  FOREIGN KEY(job_id) REFERENCES jobs(id),
+  FOREIGN KEY(tag_id) REFERENCES tags(id)
+);
+
+

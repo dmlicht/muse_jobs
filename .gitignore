@@ -1,1 +1,3 @@
 .idea
+download_jobs.egg-info/
+download_jobs/__pycache__/

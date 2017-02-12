@@ -7,6 +7,13 @@ sort a directory:
     python muse download --pages 10 # download 10 pages of jobs from the muse api
     python muse show --location "New York City Metro Area"
 
+Init database (From the root dir):
+
+    cd download_jobs
+    sqlite3 jobs.db < db.schema
+    cd -
+
+
 Get help:
 
     python muse -h
