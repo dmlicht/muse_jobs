@@ -4,22 +4,16 @@ Download and count jobs from The Muse's Jobs Api
 ## Usage
 sort a directory:
 
-    python muse download --pages 10 # download 10 pages of jobs from the muse api
-    python muse show --location "New York City Metro Area"
-
-Init database (From the root dir):
-
-    cd download_jobs
-    sqlite3 jobs.db < db.schema
-    cd -
-
-Run JSON to Database code on example jobs json:
-
-    sh run_add_script.sh
+    python muse_jobs download --pages 10 # download 10 pages of jobs from the muse api
+    python muse_jobs count "New York City Metro Area" # Counts jobs in NYC
 
 Get help:
 
     python muse -h
+
+If you'd like to query the database for the jobs count using raw sql:
+
+    sqlite3 jobs.db "SELECT count(name) FROM jobs WHERE id IN (SELECT job_id from jobs_locations where location_name='New York City Metro Area');"
 
 ## Installation
 
@@ -29,19 +23,32 @@ From the root directory:
 
 ## Run Tests
 
+    pytest
+
 ## Dependencies
 
 Runtime:
 * python 3
 * requests
+* sqlite3
 
 Test:
 * pytest
 
+## Notes and improvements
+Database inserts are running super slow. This is likely because I'm inserting
+one row and a time and opening and closing a connection for each payload. With more time
+I would batch these writes.
+There is some data that I am not storing because we are not using it for the counting
+or filtering by location. If we planned to go further with this dataset I would
+make the effort to store it.
+Write more automated tests. I wrote one end to end test to check the core functionality.
+
+
 ## Roadmap
 #### Should do
 [X] Dump api results into a local database
-[ ] CLI
+[X] CLI
 [X] Write SQL query
 
 #### Could do
