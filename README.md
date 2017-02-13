@@ -1,5 +1,5 @@
-# Download Jobs
-Download jobs from The Muse's Jobs Api
+# Muse Jobs
+Download and count jobs from The Muse's Jobs Api
 
 ## Usage
 sort a directory:
@@ -40,9 +40,9 @@ Test:
 
 ## Roadmap
 #### Should do
-[ ] Dump api results into a local database
+[X] Dump api results into a local database
 [ ] CLI
-[ ] Write SQL query
+[X] Write SQL query
 
 #### Could do
 [ ] Add the ability to start from a page that isn't the first page
