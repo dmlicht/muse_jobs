@@ -1,4 +1,6 @@
 import argparse
+
+from download_jobs.add_to_db import add_job
 from download_jobs.download_muse_jobs import download_muse_jobs
 
 
@@ -13,7 +15,8 @@ def main():
 
     args = parser.parse_args()
     for job in download_muse_jobs(args.pages):
-        print(job)
+        print(job["name"])
+        add_job(job)
 
 
 if __name__ == '__main__':
