@@ -2,3 +2,4 @@
 download_jobs.egg-info/
 download_jobs/__pycache__/
 download_jobs/jobs.db
+*/__pycache*
