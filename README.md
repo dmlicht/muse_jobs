@@ -2,9 +2,16 @@
 Download and count jobs from The Muse's Jobs Api
 
 ## Usage
-sort a directory:
+To download all jobs:
+
+    python muse_jobs download
+    
+To download n pages of jobs
 
     python muse_jobs download --pages 10 # download 10 pages of jobs from the muse api
+
+To count jobs in a regions:
+
     python muse_jobs count "New York City Metro Area" # Counts jobs in NYC
 
 Get help:
@@ -47,11 +54,11 @@ Write more automated tests. I wrote one end to end test to check the core functi
 
 ## Roadmap
 #### Should do
-[X] Dump api results into a local database
-[X] CLI
-[X] Write SQL query
+[X] Dump api results into a local database  
+[X] CLI  
+[X] Write SQL query  
 
 #### Could do
-[ ] Add the ability to start from a page that isn't the first page
-[ ] Parallel Downloads
+[ ] Add the ability to start from a page that isn't the first page  
+[ ] Parallel Downloads  
 
