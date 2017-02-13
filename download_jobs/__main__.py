@@ -1,6 +1,6 @@
 import argparse
 
-from download_jobs.add_to_db import add_job
+from download_jobs.db import DB
 from download_jobs.download_muse_jobs import download_muse_jobs
 
 
@@ -14,9 +14,10 @@ def main():
                         help='The number of pages to download from the muse jobs page')
 
     args = parser.parse_args()
+
+    db = DB()
     for job in download_muse_jobs(args.pages):
-        print(job["name"])
-        add_job(job)
+        db.add_job(job)
 
 
 if __name__ == '__main__':
